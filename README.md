@@ -29,4 +29,6 @@ quick note: This manual uses anaconda. If not already, please install anaconda f
 2. in that same directory, save the .gef file of the CPT that needs to be analyzed
 3. in main.py specify the input parameters
 
+#EXAMPLE
+1. the current code analyses the CPT000000097976_IMBRO_A.gef file. if all files are in the same directory folder, run main.py to check if the code works!
 
