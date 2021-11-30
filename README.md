@@ -24,8 +24,9 @@ quick note: This manual uses anaconda. If not already, please install anaconda f
   conda install -c conda-forge descartes
   
 
-# STEP 4: DOWNLOAD THE PYTHON FILES 
-1. 
-1. add the CPT .gef file to the folder
-1. main.py contains a list of input parameters. Please fill these in accordingly.
+# STEP 4: DOWNLOAD and THE PYTHON FILES 
+1. Download and save the files in a directory folder
+2. in that same directory, save the .gef file of the CPT that needs to be analyzed
+3. in main.py specify the input parameters
+
 
