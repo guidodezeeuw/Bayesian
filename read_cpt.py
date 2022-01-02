@@ -78,7 +78,7 @@ def read_cpt(params):
     matrix[:,3] = (matrix[:,0] * 0.01) -0.5*0.01
     matrix[:,3] = matrix[:,3]*(matrix[:,3]>0)
 
-    #matrix[:,3] = np.array(df.iloc[:,3]) 
+
     #check if first value has error and if so, give it the closest 'real' value
     if matrix[0,0] == lengtherror:
         matrix[0,0]=matrix[np.where(matrix[:,0]!=lengtherror)[0][0],0]
@@ -103,7 +103,7 @@ def read_cpt(params):
     """ calculate other columns """
     
     #11: corrected cone resistance
-    matrix[:,11] =  matrix[:,1]+(1-alpha)*matrix[:,3]
+    matrix[:,11] =  matrix[:,1]
     
     #4: fr
     matrix[:,4]= (matrix[:,2]/matrix[:,11])*100
@@ -339,7 +339,6 @@ def plot_summary(matrix,summary,final_result,params):
         if i == 0:
             ax2.fill_between(np.arange(0,10),start, start+final_result[0,0], facecolor=collor_matrix)
         else:
-            print(start+final_result[i-1,0], start+sum(final_result[:i+1,0]))
             ax2.fill_between(np.arange(0,10),start+sum(final_result[:i,0]),start+sum(final_result[:i+1,0]), facecolor=collor_matrix)
    # plt.savefig('summary_depth.pdf')
     plt.show()
@@ -353,16 +352,15 @@ def plot_summary(matrix,summary,final_result,params):
     ax.hlines(0,0,1011.5, color='k',linewidth=1.5)
     ax.hlines(0.6,0,11.5, color='k',linewidth=1.5)
     ax.hlines(0.3,4,11.5, color='k', linewidth=1.5)
+    
     #text
     ax.text(0.1,0.17,f'Model', **Tfont, fontsize=15)
     ax.text(0.1,0.07,f'Class $M_N$', **Tfont, fontsize=15)
     ax.text(1.7,0.07,r'ln[P(${\xi}$|$M_N$)]', **Tfont, fontsize=15)
     ax.text(4,0.5,'Most probable',**Tfont, fontsize=15)
     ax.text(4,0.37,r'thickness, $h^*_N$ (m)', **Tfont, fontsize=15)
-    #ax.text(0.1,0.65,f'Table {params["Table number"]}: ', **Tfont, fontsize=15, weight='bold')
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
-    #ax.text(0.7,0.65,'Results of the Bayesian Approach',**Tfont,fontsize=15)
     for i in range(len(summary)):
         ax.text(4+0.8*i,0.07,f"$h^*_{i+1}$", **Tfont, fontsize=15)
         ax.text(0.1,-0.1-i*0.12,f"$M_{i+1}$", **Tfont, fontsize=15)

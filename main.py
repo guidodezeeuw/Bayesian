@@ -21,12 +21,10 @@ import matplotlib.pyplot as plt
 
 params = {
     "cpt":              "CPT000000097976_IMBRO_A.gef",          #cpt gef file
-    "N min":            1,                                      #minimum soil layers to consider
-    "N max":            9,                                      #maximum soil layers to consider
+    "N max":            6,                                      #maximum soil layers to consider
     "min thickness":    0.1,                                    #minim thickness of a layer to be considered a separate layer
     "std Fr":           1,                                      #standard deviation of friction ratio
     "std Qt":           1.2,                                    #standard deviation of cone resistance
-    "Table number":     1,                
     "implement constraints": "no",                             #if desired to use constraints: "yes". if no constraints are considered "no"                       
     "boundary constraint": np.array([[6,9,2],                   #specify constraints
                                      [19.5,20.2,3],
@@ -51,8 +49,6 @@ Fread.plot_boundary_constraints(matrix,params)       #plot figure with boundary 
 matrix_generalized = Fread.generalize(matrix,params)             #generalize matrix based on min_thickness
 
 Frob.plot_Robertson(matrix_generalized)
-print(len(matrix_generalized))
-print(matrix[-1,0]-matrix[0,0])
 print("Obtain matrix: SUCCES")
 
 """
